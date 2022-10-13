@@ -1,6 +1,11 @@
-import uvicorn
-from app.__main__ import app
+from fastapi import FastAPI
+from app.controller import home_router, ping_router
 
 
-if __name__ == "__main__":
-    uvicorn.run("app.main:app", host="127.0.0.1", port=5000, reload=True, log_level="info")
+def create_app() -> FastAPI:
+    app = FastAPI(title="Store API")
+
+    app.include_router(home_router, prefix="/home")
+    app.include_router(ping_router, prefix="/ping")
+
+    return app
