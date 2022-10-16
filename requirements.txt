@@ -4,3 +4,4 @@ uvicorn
 gunicorn
 pytest
 requests
+sqlalchemy
